@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    letter-spacing: -0.011em;
+  }
+
+  body {
+    @apply bg-[#FAFAEB] text-stone-900 antialiased selection:bg-[#D5EBDA] selection:text-stone-900;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Safe area padding for mobile devices */
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    body {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+  }
+
+  /* Prevent iOS Safari auto-zoom on input focus */
+  @media (max-width: 640px) {
+    input, select, textarea {
+      font-size: 16px !important;
+    }
+  }
+}
+
+@layer components {
+  /* Minimalist Aesthetic Cards */
+  .card {
+    @apply bg-white rounded-2xl border border-stone-200/80 shadow-card backdrop-blur-md;
+  }
+
+  .card-interactive {
+    @apply card transition-all duration-200 cursor-pointer;
+  }
+  .card-interactive:hover {
+    @apply bg-[#FCFCF7] border-stone-300 shadow-card-hover;
+    transform: translateY(-1px);
+  }
+
+  /* Minimalist Form Controls */
+  .input {
+    @apply w-full rounded-xl border border-stone-200 bg-white px-3.5 py-2 text-xs sm:text-sm text-stone-900 placeholder-stone-400 outline-none transition-all duration-150;
+  }
+  .input:focus {
+    @apply border-[#8CCA9A] shadow-input-focus bg-white;
+  }
+
+  /* Minimalist Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl font-medium transition-all duration-150 text-xs sm:text-sm active:scale-[0.98];
+  }
+  .btn-primary {
+    @apply btn bg-[#D5EBDA] hover:bg-[#B2DCBC] active:bg-[#8CCA9A] text-stone-900 font-semibold px-4 py-2 shadow-xs border border-[#8CCA9A]/40;
+  }
+  .btn-secondary {
+    @apply btn bg-white hover:bg-[#FAFAEB] text-stone-700 border border-stone-200 px-3.5 py-2;
+  }
+  .btn-ghost {
+    @apply btn text-stone-600 hover:text-stone-900 hover:bg-stone-100/70 px-3 py-1.5;
+  }
+
+  /* Aesthetic Badges using FAFAEB, F3E4F1, D5EBDA, F4DACD, EAD3D4 */
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-[11px] font-medium;
+  }
+  .badge-sage {
+    @apply bg-[#D5EBDA]/70 text-emerald-900 border border-[#B2DCBC];
+  }
+  .badge-blush {
+    @apply bg-[#EAD3D4]/70 text-rose-950 border border-[#D7AEB0];
+  }
+  .badge-peach {
+    @apply bg-[#F4DACD]/70 text-amber-950 border border-[#EABCA4];
+  }
+  .badge-lavender {
+    @apply bg-[#F3E4F1]/80 text-purple-950 border border-[#E6C6E1];
+  }
+  .badge-cream {
+    @apply bg-[#FAFAEB] text-stone-700 border border-stone-200;
+  }
+  .badge-emerald {
+    @apply bg-[#D5EBDA]/70 text-emerald-900 border border-[#B2DCBC];
+  }
+  .badge-rose {
+    @apply bg-[#EAD3D4]/70 text-rose-950 border border-[#D7AEB0];
+  }
+  .badge-amber {
+    @apply bg-[#F4DACD]/70 text-amber-950 border border-[#EABCA4];
+  }
+  .badge-neutral {
+    @apply bg-[#FAFAEB] text-stone-700 border border-stone-200;
+  }
+}
+
+/* Minimalist Ultra-Thin Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(28, 25, 23, 0.15);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(28, 25, 23, 0.3);
+}
+
+/* Print Stylesheet */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  header, nav, button, .no-print, canvas {
+    display: none !important;
+  }
+  .card {
+    border: 1px solid #e2e8f0 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+  }
+}
